@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import styled from 'styled-components';
+import {connect} from "react-redux";
 
 import './UserPage.css';
 import {getUserInfo, selectUserIssues, selectMessages} from '../../helpers/firebase'
@@ -33,7 +34,7 @@ const UserBio = styled.div`
 	}
 `;
 
-export default class UserPage extends Component {
+class UserPage extends Component {
 	state = {
 		topics: [],
 		userId: 'HSp4BL6almcFwelsV5u9',
@@ -47,7 +48,10 @@ export default class UserPage extends Component {
 	}
 
 	showDialog = dialogId => {
-		selectMessages(dialogId)
+		const {setDialogId, setStatus} = this.props;
+		setStatus(true);
+		setDialogId(dialogId);
+		//this.props.setStatus()
 	};
 
 	renderCard = (item, ind) => {
@@ -91,3 +95,10 @@ export default class UserPage extends Component {
 		)
 	}
 }
+
+const mapDispatchToProps = dispatch => ({
+	setStatus: data => dispatch.menu.setStatus(data),
+	setDialogId: data => dispatch.menu.setDialogId(data),
+});
+
+export default connect(null, mapDispatchToProps)(UserPage);
