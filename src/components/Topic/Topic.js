@@ -1,90 +1,41 @@
 import React from 'react';
+import get from 'lodash/get';
 import styled from 'styled-components';
+import {connect} from "react-redux";
 
-const Form = styled.form`
-  display:  flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100% - 50px);
-`;
+const Topic = ({setTopic}) => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const title = get(e, 'target.title.value', '');
+        const category = get(e, 'target.category.value', '');
+        const issue = get(e, 'target.issue.value', '');
+        setTopic({title,category,issue});
+    };
 
-const Title = styled.h3`
-    display: inline-block;
-    width: 100%;
-`;
-
-const Textarea = styled.textarea`
-    display: inline-block;
-    width: calc(100% - 2px);
-    height: 200px;
-    font-size: 28px;
-    border: 1px solid #d00;
-    background-color: white;
-    resize: none;
-    &::placeholder {
-      color: #d00;
-    }
-`;
-
-const TopicName = styled.input`
-    display: inline-block;
-    width: 100%;
-    height: 50px;
-    font-size: 28px;
-    border: 1px solid #d00;
-    background-color: white;
-    &::placeholder {
-      color: #d00;
-    }
-`;
-
-const TopicCategory = styled.select`
-    display: inline-block;
-    width: calc(100% + 4px);
-    height: 50px;
-    font-size: 28px;
-    border-radius: 0;
-    -webkit-appearance: none;
-    border: 1px solid #d00;
-    background-color: white;
-    color: #d00;
-`;
-
-const TopicSubmit = styled.input`
-    display: inline-block;
-    height: 50px;
-    width: calc(100% + 4px);
-    border: 1px solid #d00;
-    background-color: white;
-    font-size: 28px;
-`;
-
-
-const Topic = () => {
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <fieldset className='uk-fieldset'>
 
                 <legend className='uk-legend'>Your topic</legend>
 
                 <div className="uk-margin">
-                        <input className="uk-input uk-form-large uk-width-1-1" type="text" placeholder='Name' />
+                    <input className="uk-input uk-form-large uk-width-1-1" name='title' type="text" placeholder='Title' />
                 </div>
 
                 <div className='uk-margin'>
-                    <select className='uk-select uk-form-large' style={{color: 'grey'}}>
+                    <select className='uk-select uk-form-large' style={{color: 'grey'}} name='category'>
                         <option value="" selected disabled hidden>Choose category...</option>
-                        <option>Спорт</option>
-                        <option>Природа</option>
-                        <option>Развлечения</option>
-                        <option>Дети</option>
-                        <option>Проблема</option>
-                        <option>Идея</option>
+                        <option>Sport</option>
+                        <option>Nature</option>
+                        <option>Entertainment</option>
+                        <option>Children</option>
+                        <option>Issue</option>
+                        <option>Idea</option>
                     </select>
                 </div>
 
                 <div className='uk-margin'>
-                    <textarea className='uk-textarea uk-form-large' rows='5' placeholder='Issue'></textarea>
+                    <textarea className='uk-textarea uk-form-large' name='issue' rows='5' placeholder='Issue'></textarea>
                 </div>
                 
                 <div className='uk-margin'>
@@ -96,4 +47,12 @@ const Topic = () => {
     );
 }
 
-export default Topic;
+const mapStateToProps = {
+
+}
+
+const mapDispatchToProps = dispatch => ({
+    setTopic: data => dispatch.topic.setTopic(data),
+});
+
+export default connect(null, mapDispatchToProps)(Topic);
