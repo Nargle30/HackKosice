@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import styled from 'styled-components';
 
 import Blind from './Blind/Blind';
 import Topic from "../Topic/Topic";
 import {connect} from "react-redux";
-import Chat from "./Chat";
+import Chat from "../Chat/Chat";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
@@ -20,26 +20,18 @@ const StyledPanel = styled.aside`
 	background-color: #ccce;
 
 	@media (max-width: ${`500px`}) {
-		left: ${props => (props.isOpen ? '0' : '25px')};
-		bottom: 0;
-		font-size: 0.9rem;
-		min-width: 300px;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
 		width: 100%;
 	}
 `;
 
-const ControlPanel = ({topicData}) => {
-	const [isOpenMenu, setIsOpenMenu] = useState(true);
-
+const ControlPanel = ({isOpen, setStatus, topicData}) => {
 	const handleBlindClick = () => {
-		setIsOpenMenu(!isOpenMenu);
+		setStatus(!isOpen);
 	};
 
 	return (
-		<StyledPanel isOpen={isOpenMenu}>
-			<Blind handleBlindClick={handleBlindClick} isOpen={isOpenMenu} />
+		<StyledPanel isOpen={isOpen}>
+			<Blind handleBlindClick={handleBlindClick} isOpen={isOpen} />
 			{topicData ? <Chat /> :  <Topic />}
 		</StyledPanel>
 	);
@@ -47,6 +39,11 @@ const ControlPanel = ({topicData}) => {
 
 const mapStateToProps = state => ({
 	topicData: state.topic.data,
-})
+	isOpen: state.menu.isOpen,
+});
 
-export default connect(mapStateToProps)(ControlPanel);
+const mapDispatchToProps = dispatch => ({
+	setStatus: isOpen => dispatch.menu.setStatus(isOpen),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
