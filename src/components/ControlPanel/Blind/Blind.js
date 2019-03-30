@@ -10,7 +10,7 @@ const StyledBlind = styled.span`
 	top: calc(50% - 25px);
 	left: -30px;
 
-	@media (max-width: ${`1000px`}) {
+	@media (max-width: ${`500px`}) {
 		right: ${props => (props.isOpen ? '0' : '-25px')};
 	}
 `;

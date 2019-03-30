@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Blind from './Blind/Blind';
 import Topic from "../Topic/Topic";
+import {connect} from "react-redux";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
@@ -17,7 +18,7 @@ const StyledPanel = styled.aside`
 	padding: 25px;
 	background-color: #ccce;
 
-	@media (max-width: ${`1000px`}) {
+	@media (max-width: ${`500px`}) {
 		left: ${props => (props.isOpen ? '0' : '25px')};
 		bottom: 0;
 		font-size: 0.9rem;
@@ -28,7 +29,7 @@ const StyledPanel = styled.aside`
 	}
 `;
 
-const ControlPanel = () => {
+const ControlPanel = ({topicData}) => {
 	const [isOpenMenu, setIsOpenMenu] = useState(true);
 
 	const handleBlindClick = () => {
@@ -38,9 +39,13 @@ const ControlPanel = () => {
 	return (
 		<StyledPanel isOpen={isOpenMenu}>
 			<Blind handleBlindClick={handleBlindClick} isOpen={isOpenMenu} />
-			<Topic />
+			{topicData ? null :  <Topic />}
 		</StyledPanel>
 	);
 }
 
-export default ControlPanel;
+const mapStateToProps = state => ({
+	topicData: state.topic.data,
+})
+
+export default connect(mapStateToProps)(ControlPanel);
