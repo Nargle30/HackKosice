@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ControlPanel from '../components/ControlPanel/ControlPanel';
-import {KosiceMap} from "../components/KosiceMap/KosiceMap";
+import KosiceMap from "../components/KosiceMap/KosiceMap";
 import {Provider} from "react-redux";
 import { store } from '../store/store';
 

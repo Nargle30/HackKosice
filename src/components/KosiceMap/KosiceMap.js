@@ -5,6 +5,7 @@ import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster/dist/react-leaflet-markercluster';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import {selectPoints, insertPoint} from '../../helpers/firebase';
+import {connect} from "react-redux";
 
 const images = {
 	sport: "https://firebasestorage.googleapis.com/v0/b/mykosice-bb2ed.appspot.com/o/sport.svg?alt=media&token=79b92d71-e8d4-4860-bc56-fd4ecbc3b263",
@@ -16,7 +17,7 @@ const images = {
 	idea: "https://firebasestorage.googleapis.com/v0/b/mykosice-bb2ed.appspot.com/o/idea.svg?alt=media&token=68f5a24e-d395-46bc-9eaa-850795bdcbc1"
 };
 
-export class KosiceMap extends Component {
+class KosiceMap extends Component {
 
 	componentDidMount() {
 		selectPoints().then(res => this.setState({points: res}));
@@ -27,8 +28,10 @@ export class KosiceMap extends Component {
 	};
 
 	addMarker = e => {
+		const {topic} = this.props;
+		if (Object.keys(topic).length < 3) return;
 		const {points} = this.state;
-		const category = 'entertainment';
+		const category = topic.category.toLowerCase();
 		const newPoint = {
 			lng: e.latlng.lng,
 			lat: e.latlng.lat,
@@ -82,3 +85,10 @@ export class KosiceMap extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	const {topic} = state;
+	return {topic};
+};
+
+export default connect(mapStateToProps)(KosiceMap );
