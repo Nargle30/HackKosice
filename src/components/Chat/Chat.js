@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from "react-redux";
 import format from 'date-fns/format'
 
@@ -13,6 +13,7 @@ import {
     TextComposer, TextInput,
     defaultTheme, Bubble
 } from "@livechat/ui-kit";
+import {getUserInfo} from "../../helpers/firebase";
 
 const customTheme = {
         ...defaultTheme,
@@ -35,7 +36,15 @@ const customTheme = {
         },
 }
 
+// HSp4BL6almcFwelsV5u9
+
 const Chat = ({topicData}) => {
+    const [userInfo, setUserInfo] = useState({});
+
+    useEffect(() => {
+        getUserInfo('HSp4BL6almcFwelsV5u9').then(res => setUserInfo(res))
+    });
+
     return (
         <ThemeProvider theme={customTheme}>
             <span className='uk-legend'>
@@ -47,7 +56,7 @@ const Chat = ({topicData}) => {
             <div style={{ width: '100%', height: 'calc(100vh - 250px)'}}>
                 <MessageList>
                     <MessageGroup>
-                        <Message date={format(Date.now(), 'HH:mm')} isOwn={true} authorName="Kirill Anisimov">
+                        <Message date={format(Date.now(), 'HH:mm')} isOwn={true} authorName={userInfo.name}>
                             <Bubble isOwn={true} radiusType='last' style={{borderRadius: '5px'}}>
                                 <MessageText>
                                     {topicData.issue}
