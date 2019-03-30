@@ -1,6 +1,6 @@
 export const topic = {
 	state: {},
 	reducers: {
-		setTopic: (state, data) => ({ ...state, ...data}),
+		setTopic: (state, data) => ({ ...state, data: data}),
 	},
 };

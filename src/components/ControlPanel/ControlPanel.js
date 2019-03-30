@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Blind from './Blind/Blind';
 import Topic from "../Topic/Topic";
 import {connect} from "react-redux";
+import Chat from "./Chat";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
@@ -39,7 +40,7 @@ const ControlPanel = ({topicData}) => {
 	return (
 		<StyledPanel isOpen={isOpenMenu}>
 			<Blind handleBlindClick={handleBlindClick} isOpen={isOpenMenu} />
-			{topicData ? null :  <Topic />}
+			{topicData ? <Chat /> :  <Topic />}
 		</StyledPanel>
 	);
 }
