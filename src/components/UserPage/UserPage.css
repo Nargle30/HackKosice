@@ -1,0 +1,11 @@
+.uk-card {
+  margin-bottom: 20px;
+}
+
+.uk-card-header, uk-card-footer {
+  padding: 10px 30px;
+}
+
+.uk-width-expand {
+  padding-left: 0;
+}
