@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Blind from './Blind/Blind';
+import Topic from "../Topic/Topic";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
@@ -28,7 +29,7 @@ const StyledPanel = styled.aside`
 `;
 
 const ControlPanel = () => {
-	const [isOpenMenu, setIsOpenMenu] = useState(false);
+	const [isOpenMenu, setIsOpenMenu] = useState(true);
 
 	const handleBlindClick = () => {
 		setIsOpenMenu(!isOpenMenu);
@@ -37,7 +38,7 @@ const ControlPanel = () => {
 	return (
 		<StyledPanel isOpen={isOpenMenu}>
 			<Blind handleBlindClick={handleBlindClick} isOpen={isOpenMenu} />
-			{/*{store.userId ? <Points store={store} /> : <Profile store={store} />}*/}
+			<Topic />
 		</StyledPanel>
 	);
 }
