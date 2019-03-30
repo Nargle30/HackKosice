@@ -20,7 +20,6 @@ export class KosiceMap extends Component {
 
 	componentDidMount() {
 		selectPoints().then(res => this.setState({points: res}));
-		console.log(this.state.points)
 	}
 
 	state = {
@@ -59,9 +58,7 @@ export class KosiceMap extends Component {
 	};
 
 	render() {
-
 		const {points} = this.state;
-		console.log(points)
 		return (
 			<Map
 				center={CENTER}
