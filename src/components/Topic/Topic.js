@@ -1,6 +1,5 @@
 import React from 'react';
 import get from 'lodash/get';
-import styled from 'styled-components';
 import {connect} from "react-redux";
 
 const Topic = ({setTopic}) => {
@@ -39,7 +38,7 @@ const Topic = ({setTopic}) => {
                 </div>
                 
                 <div className='uk-margin'>
-                    <input type='submit' value='Create topic' className="uk-button uk-button-primary uk-button-large uk-width-1-1" />
+                    <input type='submit' value='Create topic' className="uk-button uk-button-primary uk-button-large uk-width-1-1" style={{backgroundColor: 'rgb(0, 68, 139)'}} />
                 </div>
                 
             </fieldset>

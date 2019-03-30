@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import styled from 'styled-components';
 
 import Blind from './Blind/Blind';
@@ -24,16 +24,14 @@ const StyledPanel = styled.aside`
 	}
 `;
 
-const ControlPanel = ({topicData}) => {
-	const [isOpenMenu, setIsOpenMenu] = useState(false);
-
+const ControlPanel = ({isOpen, setStatus, topicData}) => {
 	const handleBlindClick = () => {
-		setIsOpenMenu(!isOpenMenu);
+		setStatus(!isOpen);
 	};
 
 	return (
-		<StyledPanel isOpen={isOpenMenu}>
-			<Blind handleBlindClick={handleBlindClick} isOpen={isOpenMenu} />
+		<StyledPanel isOpen={isOpen}>
+			<Blind handleBlindClick={handleBlindClick} isOpen={isOpen} />
 			{topicData ? <Chat /> :  <Topic />}
 		</StyledPanel>
 	);
@@ -41,6 +39,11 @@ const ControlPanel = ({topicData}) => {
 
 const mapStateToProps = state => ({
 	topicData: state.topic.data,
-})
+	isOpen: state.menu.isOpen,
+});
 
-export default connect(mapStateToProps)(ControlPanel);
+const mapDispatchToProps = dispatch => ({
+	setStatus: isOpen => dispatch.menu.setStatus(isOpen),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
