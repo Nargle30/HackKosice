@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6cf0857b-e78e-4395-b28b-eedc4d71cb4d" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Topic/Topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Topic/Topic.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,19 +18,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="KosiceMap.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="KosiceMap.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+            <state relative-caret-position="78">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Topic.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Topic.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Topic/Topic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
+            <state relative-caret-position="395">
               <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -130,8 +127,8 @@
         <option value="$PROJECT_DIR$/src/components/UserPage/UserPage.css" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/App/App.js" />
-        <option value="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" />
         <option value="$PROJECT_DIR$/src/components/Topic/Topic.js" />
+        <option value="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" />
       </list>
     </option>
   </component>
@@ -353,13 +350,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13259000" />
+    <option name="totallyTimeSpent" value="13780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -367,7 +364,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.5224242" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.510303" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.50060606" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.50060606" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -683,8 +680,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+        <state relative-caret-position="78">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -752,7 +749,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Topic/Topic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="395">
           <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />

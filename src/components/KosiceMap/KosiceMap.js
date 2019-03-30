@@ -29,9 +29,9 @@ class KosiceMap extends Component {
 
 	addMarker = e => {
 		const {topic} = this.props;
-		if (Object.keys(topic).length < 3) return;
+		if (!topic || !topic.data || !topic.data.category) return;
 		const {points} = this.state;
-		const category = topic.category.toLowerCase();
+		const category = topic.data.category.toLowerCase();
 		const newPoint = {
 			lng: e.latlng.lng,
 			lat: e.latlng.lat,
