@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import ControlPanel from '../ControlPanel/ControlPanel';
+import ControlPanel from '../components/ControlPanel/ControlPanel';
 import {KosiceMap} from "../components/KosiceMap/KosiceMap";
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <ControlPanel />
-		  <KosiceMap />
+        <KosiceMap />
       </div>
     );
   }
