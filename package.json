@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "leaflet": "^1.4.0",
+    "leaflet.markercluster": "^1.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-leaflet": "^2.2.1",
+    "react-leaflet-markercluster": "^2.0.0-rc3",
+    "react-scripts": "2.1.8"
     "react-scripts": "2.1.8",
     "styled-components": "^4.2.0",
     "react-leaflet": "^2.2.1"
