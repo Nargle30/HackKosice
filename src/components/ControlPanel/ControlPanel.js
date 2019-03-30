@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Blind from './Blind/Blind';
 import Topic from "../Topic/Topic";
 import {connect} from "react-redux";
-import Chat from "./Chat";
+import Chat from "../Chat/Chat";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
@@ -20,18 +20,12 @@ const StyledPanel = styled.aside`
 	background-color: #ccce;
 
 	@media (max-width: ${`500px`}) {
-		left: ${props => (props.isOpen ? '0' : '25px')};
-		bottom: 0;
-		font-size: 0.9rem;
-		min-width: 300px;
-		border-bottom-right-radius: 0;
-		border-bottom-left-radius: 0;
 		width: 100%;
 	}
 `;
 
 const ControlPanel = ({topicData}) => {
-	const [isOpenMenu, setIsOpenMenu] = useState(true);
+	const [isOpenMenu, setIsOpenMenu] = useState(false);
 
 	const handleBlindClick = () => {
 		setIsOpenMenu(!isOpenMenu);
