@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 import ControlPanel from '../components/ControlPanel/ControlPanel';
 import {KosiceMap} from "../components/KosiceMap/KosiceMap";
+import {Provider} from "react-redux";
+import { store } from '../store/store';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <ControlPanel />
-        <KosiceMap />
-      </div>
+        <Provider store={store}>
+            <div className="App">
+                <ControlPanel />
+                <KosiceMap />
+            </div>
+        </Provider>
     );
   }
 }
