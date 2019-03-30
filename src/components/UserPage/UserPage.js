@@ -33,7 +33,7 @@ const UserBio = styled.div`
 	}
 `;
 
-export class UserPage extends Component {
+export default class UserPage extends Component {
 	state = {
 		topics: [],
 		userId: 'HSp4BL6almcFwelsV5u9',
@@ -47,7 +47,7 @@ export class UserPage extends Component {
 	}
 
 	showDialog = dialogId => {
-		// selectMessages(dialogId)
+		selectMessages(dialogId)
 	};
 
 	renderCard = (item, ind) => {

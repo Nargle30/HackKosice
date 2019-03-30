@@ -77,8 +77,11 @@ export const selectMessages = dialogId => {
 		.then(doc => {
 			if (doc.exists) {
 				const dialog = doc.data();
-
-				console.log(dialog)
+				return {
+					title: dialog.title,
+					messages: dialog.messages,
+					issue: dialog.issue,
+				}
 			}
 			return null;
 		})
