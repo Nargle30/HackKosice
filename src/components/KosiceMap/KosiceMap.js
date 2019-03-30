@@ -4,28 +4,14 @@ import { CENTER, ZOOM, MAX_ZOOM, THEME } from '../../constants/map';
 import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster/dist/react-leaflet-markercluster';
 import 'react-leaflet-markercluster/dist/styles.min.css';
-import styled from 'styled-components';
-
-const MarketItem = styled.span`
-	position: relative;
-	top: -50px;
-	left: -20px;
-
-	&:after {
-		content: '';
-		position: absolute;
-		box-sizing: border-box;
-		display: block;
-		left: calc(50% - 10px);
-		top: 10px;
-		border-style: solid;
-		border-color: #000 transparent transparent transparent;
-		border-width: 10px;
-	}
-`;
-
+import {selectPoints} from '../../helpers/firebase';
 
 export class KosiceMap extends Component {
+	componentDidMount() {
+		//this.setState({points: selectPoints()});
+		console.log(selectPoints())
+		selectPoints().then(res => this.setState({points: res}));
+	}
 	state = {
 		points: [{
 			lat: 48.71647860742975,
