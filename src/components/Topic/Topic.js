@@ -21,7 +21,6 @@ const Topic = ({setTopic}) => {
                 <div className="uk-margin">
                     <input className="uk-input uk-form-large uk-width-1-1" name='title' type="text" placeholder='Title' />
                 </div>
-
                 <div className='uk-margin'>
                     <select className='uk-select uk-form-large' style={{color: 'grey'}} name='category'>
                         <option value="" selected disabled hidden>Choose category...</option>
@@ -29,8 +28,9 @@ const Topic = ({setTopic}) => {
                         <option>Nature</option>
                         <option>Entertainment</option>
                         <option>Children</option>
-                        <option>Issue</option>
-                        <option>Idea</option>
+                        <option>Problem</option>
+						<option>Announce</option>
+						<option>Idea</option>
                     </select>
                 </div>
 
