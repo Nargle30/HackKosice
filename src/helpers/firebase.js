@@ -41,3 +41,46 @@ export const selectPoints = () => {
 };
 
 export const insertPoint = data => _insert('markers', data);
+
+export const getUserInfo = id => {
+	const users = firestore.collection('users');
+	return users.doc(id)
+		.get()
+		.then(doc => {
+			if (doc.exists) {
+				const user = doc.data();
+				return {name: user.name, url: user.url};
+			}
+			return null;
+		})
+		.catch(err => console.error(err));
+};
+
+export const selectUserIssues = id => {
+	const users = firestore.collection('users');
+	return users.doc(id)
+	.get()
+	.then(doc => {
+		if (doc.exists) {
+			const user = doc.data();
+			return user.dialogs;
+		}
+		return null;
+	})
+	.catch(err => console.error(err));
+};
+
+export const selectMessages = dialogId => {
+	const dialogs = firestore.collection('dialogs');
+	return dialogs.doc(dialogId)
+		.get()
+		.then(doc => {
+			if (doc.exists) {
+				const dialog = doc.data();
+
+				console.log(dialog)
+			}
+			return null;
+		})
+		.catch(err => console.error(err));
+};

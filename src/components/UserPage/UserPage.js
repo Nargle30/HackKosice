@@ -3,24 +3,7 @@ import 'react-leaflet-markercluster/dist/styles.min.css';
 import styled from 'styled-components';
 
 import './UserPage.css';
-
-const texts = [
-	{
-		title: 'Problem',
-		time: '2019-03-30T19:00',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
-	},
-	{
-		title: 'Problem',
-		time: '2019-03-30T19:00',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
-	},
-	{
-		title: 'Problem',
-		time: '2019-03-30T19:00',
-		info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
-	}
-];
+import {getUserInfo, selectUserIssues, selectMessages} from '../../helpers/firebase'
 
 const UserPageLayout = styled.div`
 	position: relative;
@@ -51,13 +34,27 @@ const UserBio = styled.div`
 `;
 
 export class UserPage extends Component {
-	showDialog = () => {
-
+	state = {
+		topics: [],
+		userId: 'HSp4BL6almcFwelsV5u9',
+		info: {}
 	};
 
-	renderCard = item => {
+	componentDidMount(){
+		const {userId} = this.state;
+		getUserInfo(userId).then(res => this.setState({info: res}))
+		selectUserIssues(userId).then(res => this.setState({topics: res}));
+	}
+
+	showDialog = dialogId => {
+		// selectMessages(dialogId)
+	};
+
+	renderCard = (item, ind) => {
+		const date = new Date(null);
+		date.setSeconds(item.date.seconds); // specify value for SECONDS here
 		return (
-			<div className="uk-card uk-card-default uk-width-1-2@m">
+			<div className="uk-card uk-card-default uk-width-1-2@m" key={ind}>
 				<div className="uk-card-header">
 					<div className="uk-grid-small uk-flex-middle uk-grid">
 						<div className="uk-width-auto">
@@ -65,30 +62,31 @@ export class UserPage extends Component {
 						<div className="uk-width-expand">
 							<h3 className="uk-card-title uk-margin-remove-bottom">{item.title}</h3>
 							<p className="uk-text-meta uk-margin-remove-top">
-								<time>{item.time}</time>
+								<time>{date.toLocaleDateString()}</time>
 							</p>
 						</div>
 					</div>
 				</div>
 				<div className="uk-card-body">
-					<p>{item.info}</p>
+					<p>{item.issue}</p>
 				</div>
 				<div className="uk-card-footer">
-					<a className="uk-button uk-button-text" onClick={this.showDialog()}>View dialog</a>
+					<a className="uk-button uk-button-text" onClick={() => this.showDialog(item.dialog_id)}>View dialog</a>
 				</div>
 			</div>
 		);
 	};
 
 	render() {
+		const {topics, info} = this.state;
 		return (
 			<UserPageLayout>
 				<h1>My Kosice</h1>
 				<UserBio>
-					<img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/12/11/naturo-monkey-selfie.jpg?w968h681" />
-					<p>John Smith</p>
+					<img src={info.url} />
+					<p>{info.name}</p>
 				</UserBio>
-				{texts.map(val => this.renderCard(val))}
+				{topics.map((topic, ind) => this.renderCard(topic, ind))}
 			</UserPageLayout>
 		)
 	}
