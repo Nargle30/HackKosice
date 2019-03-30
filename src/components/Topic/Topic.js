@@ -74,12 +74,12 @@ const Topic = () => {
                 <div className='uk-margin'>
                     <select className='uk-select uk-form-large' style={{color: 'grey'}}>
                         <option value="" selected disabled hidden>Choose category...</option>
-                        <option>Спорт</option>
-                        <option>Природа</option>
-                        <option>Развлечения</option>
-                        <option>Дети</option>
-                        <option>Проблема</option>
-                        <option>Идея</option>
+                        <option>Sport</option>
+                        <option>Nature</option>
+                        <option>Entertainment</option>
+                        <option>Children</option>
+                        <option>Issue</option>
+                        <option>Idea</option>
                     </select>
                 </div>
 
