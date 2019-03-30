@@ -15,9 +15,14 @@ const firestore = firebase
 
 const _isObject = obj => (typeof obj === 'object' || obj instanceof Object) && !!obj;
 
+const _insert = (collectionName, data) => {
+	if (_isObject(data) && Object.keys(data).length > 0) {
+		return firestore.collection(collectionName).add(data);
+	}
+};
+
 export const selectPoints = () => {
 	const points = firestore.collection('markers');
-	console.log(points)
 	const userPoints = [];
 	return points
 		.get()
@@ -34,3 +39,5 @@ export const selectPoints = () => {
 		})
 		.catch(err => console.error(err));
 };
+
+export const insertPoint = data => _insert('markers', data);
