@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import get from 'lodash/get';
 import { CENTER, ZOOM, MAX_ZOOM, THEME } from '../../constants/map';
 import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster/dist/react-leaflet-markercluster';
@@ -69,7 +70,9 @@ class KosiceMap extends Component {
 		const {setStatus, enableChat, setDialogId} = this.props;
 		setStatus(true);
 		enableChat(true);
-		selectDialogByMarker(markerID).then(res => setDialogId(res[0].id))
+		selectDialogByMarker(markerID).then(res => {
+			setDialogId(get(res[0], 'id', null));
+		})
 	};
 
 	render() {
@@ -86,7 +89,7 @@ class KosiceMap extends Component {
 				<TileLayer url={THEME} />
 				<MarkerClusterGroup>
 					{points.map((point, ind) => (
-						<Marker
+						 <Marker
 							key={ind}
 							icon={this.getIcon(point)}
 							position={point}
@@ -99,10 +102,10 @@ class KosiceMap extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	const {topic} = state;
-	return {topic};
-};
+const mapStateToProps = state => ({
+	topic: state.topic,
+	dialogId: state.menu.dialogId,
+});
 
 const mapDispatchToProps = dispatch => ({
 	setStatus: data => dispatch.menu.setStatus(data),

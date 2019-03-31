@@ -19,14 +19,15 @@ const Topic = ({setTopic, setCategory, isChatEnabled, markerID}) => {
                 title: title,
                 creator_name: user.name,
                 creator_logo: user.url,
-                date: Date.now(),
+                date: {seconds: Date.now() / 1000},
                 creator_type: "user",
                 marker_id: markerID,
+                category: category.toLowerCase(),
 
                 messages: [
                     {
                         text: issue,
-                        time: Date.now(),
+                        time: {seconds: Date.now() / 1000},
                         type: "text",
                         user_name: user.name,
                         user_logo: user.url,

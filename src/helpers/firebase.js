@@ -104,9 +104,7 @@ export const selectDialogByMarker = markerID  => {
 			return snapshot.docs.filter(doc => {
 				if (doc.exists) {
 					const dialog = doc.data();
-					if (dialog.marker_id) {
-						return dialog.marker_id === markerID;
-					}
+					return dialog.marker_id == markerID;
 				} else {
 					throw "Document isn't exists";
 				}
