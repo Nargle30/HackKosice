@@ -105,13 +105,7 @@ export const selectDialogByMarker = markerID  => {
 				if (doc.exists) {
 					const dialog = doc.data();
 					if (dialog.marker_id) {
-						console.log(dialog.marker_id)
-						console.log(markerID)
-						if (dialog.marker_id === markerID) {
-							return true;
-						} else {
-							return false;
-						}
+						return dialog.marker_id === markerID;
 					}
 				} else {
 					throw "Document isn't exists";
