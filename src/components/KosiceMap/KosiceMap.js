@@ -64,6 +64,13 @@ class KosiceMap extends Component {
 		});
 	};
 
+	openDialog = dialogId => {
+		const {setStatus, enableChat, setDialogId} = this.props;
+		setStatus(true);
+		enableChat(true);
+		setDialogId(dialogId);
+	};
+
 	render() {
 		const {points} = this.state;
 		return (
@@ -82,6 +89,7 @@ class KosiceMap extends Component {
 							key={ind}
 							icon={this.getIcon(point)}
 							position={point}
+							onClick={() => this.openDialog(point.dialog)}
 						/>
 					))}
 				</MarkerClusterGroup>
@@ -96,8 +104,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+	setStatus: data => dispatch.menu.setStatus(data),
 	setCategory: data => dispatch.topic.setCategory(data),
 	enableChat: data => dispatch.topic.enableChat(data),
+	setDialogId: data => dispatch.menu.setDialogId(data),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(KosiceMap );

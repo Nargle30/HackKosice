@@ -46,7 +46,7 @@ class UserPage extends Component {
 	componentDidMount(){
 		const {userId} = this.state;
 		const {enableChat} = this.props;
-		getUserInfo(userId).then(res => this.setState({info: res}))
+		getUserInfo(userId).then(res => this.setState({info: res}));
 		selectUserIssues(userId).then(res => this.setState({topics: res}));
 		enableChat(true);
 	}
