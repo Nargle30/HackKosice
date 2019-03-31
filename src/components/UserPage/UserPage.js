@@ -22,6 +22,7 @@ const UserBio = styled.div`
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: flex-start;
+	margin-top: 50px;
 	margin-bottom: 20px;
 	padding-left: 30px;
 	box-sizing: border-box;
@@ -85,7 +86,6 @@ class UserPage extends Component {
 		const {topics, info} = this.state;
 		return (
 			<UserPageLayout>
-				<h1>My Kosice</h1>
 				<UserBio>
 					<img src={info.url} />
 					<p>{info.name}</p>
