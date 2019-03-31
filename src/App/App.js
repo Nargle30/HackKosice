@@ -12,12 +12,12 @@ import ControlPanel from "../components/ControlPanel/ControlPanel";
 class App extends Component {
   render() {
     return (
-        <MemoryRouter initialEntries={['/user', '/']} initialIndex={1}>
+        <MemoryRouter initialEntries={['/', '/user']} initialIndex={0}>
             <Provider store={store}>
                 <div className="App">
                     <Header />
                     <ControlPanel />
-                    <Route path={['/user']} component={UserPage} exact />
+                    <Route path={'/user'} component={UserPage} exact />
                     <Route path={'/'} component={KosiceMap} exact />
                 </div>
             </Provider>
