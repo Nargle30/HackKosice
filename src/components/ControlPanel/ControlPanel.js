@@ -24,7 +24,7 @@ const StyledPanel = styled.aside`
 	}
 `;
 
-const ControlPanel = ({isOpen, setStatus, topicData, isChatEnabled}) => {
+const ControlPanel = ({isOpen, setStatus, topicData, dialogId, isChatEnabled}) => {
 	const handleBlindClick = () => {
 		setStatus(!isOpen);
 	};
@@ -32,7 +32,7 @@ const ControlPanel = ({isOpen, setStatus, topicData, isChatEnabled}) => {
 	return (
 		<StyledPanel isOpen={isOpen}>
 			<Blind handleBlindClick={handleBlindClick} isOpen={isOpen} />
-			{topicData && isChatEnabled ? <Chat /> :  <Topic />}
+			{(topicData || dialogId) && isChatEnabled ? <Chat /> :  <Topic />}
 		</StyledPanel>
 	);
 }
@@ -41,6 +41,7 @@ const mapStateToProps = state => ({
 	topicData: state.topic.data,
 	isOpen: state.menu.isOpen,
 	isChatEnabled: state.topic.isChatEnabled,
+	dialogId: state.menu.dialogId,
 });
 
 const mapDispatchToProps = dispatch => ({

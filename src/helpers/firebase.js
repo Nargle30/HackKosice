@@ -85,6 +85,7 @@ export const selectMessages = dialogId => {
 					title: dialog.title,
 					messages: dialog.messages,
 					issue: dialog.issue,
+					category: dialog.category,
 				}
 			}
 			return null;
