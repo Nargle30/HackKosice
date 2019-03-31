@@ -52,7 +52,7 @@ const Chat = ({topicData, dialogId}) => {
                 {dialogInfo.title ? dialogInfo.title : topicData.title}
             </span>
             <div className="uk-margin">
-                {dialogInfo.category ? dialogInfo.category : topicData.category}
+                {dialogInfo.issue ? dialogInfo.issue : topicData.issue}
             </div>
             <div style={{ width: '100%', height: 'calc(100vh - 250px)'}}>
                 { dialogInfo.messages ?
