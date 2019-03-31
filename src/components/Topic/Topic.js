@@ -30,6 +30,7 @@ const Topic = ({setTopic, setCategory, isChatEnabled, markerID}) => {
                         type: "text",
                         user_name: user.name,
                         user_logo: user.url,
+                        owner: true,
                     }
                 ]
 
