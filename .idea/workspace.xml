@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cf0857b-e78e-4395-b28b-eedc4d71cb4d" name="Default Changelist" comment="Default Changelist">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Topic/Topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Topic/Topic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/topic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserPage/UserPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserPage/UserPage.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,13 +29,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Topic.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Topic.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Topic/Topic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="82">
+              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="84" selection-end-column="3" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserPage.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/UserPage/UserPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,8 +56,8 @@
       <file leaf-file-name="KosiceMap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="99" column="14" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="14" />
+            <state relative-caret-position="221">
+              <caret line="99" selection-start-line="99" selection-end-line="100" />
             </state>
           </provider>
         </entry>
@@ -127,11 +135,11 @@
         <option value="$PROJECT_DIR$/src/components/Header/Header.js" />
         <option value="$PROJECT_DIR$/src/App/App.js" />
         <option value="$PROJECT_DIR$/src/components/Map/Map.js" />
-        <option value="$PROJECT_DIR$/src/components/UserPage/UserPage.js" />
         <option value="$PROJECT_DIR$/src/models/topic.js" />
         <option value="$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js" />
         <option value="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.js" />
         <option value="$PROJECT_DIR$/src/components/Topic/Topic.js" />
+        <option value="$PROJECT_DIR$/src/components/UserPage/UserPage.js" />
       </list>
     </option>
   </component>
@@ -363,7 +371,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26040000" />
+    <option name="totallyTimeSpent" value="26223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -720,16 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/UserPage/UserPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -774,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="99" column="14" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -791,12 +782,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/KosiceMap/KosiceMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="99" selection-start-line="99" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Topic/Topic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="82">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="84" selection-end-column="3" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/UserPage/UserPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
