@@ -51,9 +51,9 @@ const Topic = ({setTopic, setCategory}) => {
     );
 }
 
-const mapStateToProps = {
+const mapStateToProps = state => {
 
-}
+};
 
 const mapDispatchToProps = dispatch => ({
 	setTopic: data => dispatch.topic.setTopic(data),
