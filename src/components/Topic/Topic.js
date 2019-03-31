@@ -2,7 +2,7 @@ import React from 'react';
 import get from 'lodash/get';
 import {connect} from "react-redux";
 
-const Topic = ({setTopic}) => {
+const Topic = ({setTopic, setCategory}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const title = get(e, 'target.title.value', '');
@@ -10,6 +10,11 @@ const Topic = ({setTopic}) => {
         const issue = get(e, 'target.issue.value', '');
         setTopic({title,category,issue});
     };
+
+	const hangleSelect = e => {
+		e.preventDefault();
+		setCategory(e.target.value);
+	};
 
     return (
         <form onSubmit={handleSubmit}>
@@ -21,7 +26,7 @@ const Topic = ({setTopic}) => {
                     <input className="uk-input uk-form-large uk-width-1-1" name='title' type="text" placeholder='Title' />
                 </div>
                 <div className='uk-margin'>
-                    <select className='uk-select uk-form-large' style={{color: 'grey'}} name='category'>
+                    <select className='uk-select uk-form-large' style={{color: 'grey'}} name='category' onChange={val => hangleSelect(val)}>
                         <option value="" selected disabled hidden>Choose category...</option>
                         <option>Sport</option>
                         <option>Nature</option>
@@ -51,7 +56,8 @@ const mapStateToProps = {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setTopic: data => dispatch.topic.setTopic(data),
+	setTopic: data => dispatch.topic.setTopic(data),
+	setCategory: data => dispatch.topic.setCategory(data),
 });
 
 export default connect(null, mapDispatchToProps)(Topic);
