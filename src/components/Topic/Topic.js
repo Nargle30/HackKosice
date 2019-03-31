@@ -1,9 +1,14 @@
 import React from 'react';
 import get from 'lodash/get';
 import {connect} from "react-redux";
+import styled from 'styled-components';
+
 import {getUserInfo, insertDialog} from "../../helpers/firebase";
 
-const Topic = ({setTopic, setCategory}) => {
+const Error = styled.p`
+    color: #bf3e3e;
+`;
+const Topic = ({setTopic, setCategory, isChatEnabled}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const title = get(e, 'target.title.value', '');
@@ -64,9 +69,10 @@ const Topic = ({setTopic, setCategory}) => {
                 <div className='uk-margin'>
                     <textarea className='uk-textarea uk-form-large' name='issue' rows='5' placeholder='Issue'></textarea>
                 </div>
+                {!isChatEnabled ? <Error>Choose category and put marker</Error> : ''}
                 
                 <div className='uk-margin'>
-                    <input type='submit' value='Create topic' className="uk-button uk-button-primary uk-button-large uk-width-1-1" style={{backgroundColor: 'rgb(0, 68, 139)'}} />
+                    <input type='submit' value='Create topic' className="uk-button uk-button-primary uk-button-large uk-width-1-1" style={{backgroundColor: isChatEnabled ? 'rgb(0, 68, 139)' : '#7e7e7e'}} />
                 </div>
                 
             </fieldset>
@@ -74,13 +80,13 @@ const Topic = ({setTopic, setCategory}) => {
     );
 }
 
-const mapStateToProps = state => {
-
-};
+const mapStateToProps = state => ({
+	isChatEnabled: state.topic.isChatEnabled,
+});
 
 const mapDispatchToProps = dispatch => ({
 	setTopic: data => dispatch.topic.setTopic(data),
 	setCategory: data => dispatch.topic.setCategory(data),
 });
 
-export default connect(null, mapDispatchToProps)(Topic);
+export default connect(mapStateToProps, mapDispatchToProps)(Topic);

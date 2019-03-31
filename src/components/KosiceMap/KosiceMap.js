@@ -28,7 +28,7 @@ class KosiceMap extends Component {
 	};
 
 	addMarker = e => {
-		const {topic, setCategory} = this.props;
+		const {topic, setCategory, enableChat} = this.props;
 		if (!topic || !topic.category) {
 			return;
 		}
@@ -51,6 +51,7 @@ class KosiceMap extends Component {
 		points.push(newPoint);
 		this.setState({points});
 		setCategory(null);
+		enableChat(true);
 	};
 
 	getIcon = point => {
@@ -96,6 +97,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
 	setCategory: data => dispatch.topic.setCategory(data),
+	enableChat: data => dispatch.topic.enableChat(data),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(KosiceMap );
