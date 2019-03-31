@@ -30,6 +30,7 @@ export const selectPoints = () => {
 			snapshot.docs.forEach(doc => {
 				if (doc.exists) {
 					const point = doc.data();
+					point.id = doc.id;
 					userPoints.push(point);
 				} else {
 					throw "Document isn't exists";
@@ -40,7 +41,9 @@ export const selectPoints = () => {
 		.catch(err => console.error(err));
 };
 
-export const insertPoint = data => _insert('markers', data);
+export const insertPoint = async data => {
+	return await _insert('markers', data);
+};
 
 export const getUserInfo = id => {
 	const users = firestore.collection('users');
@@ -89,6 +92,31 @@ export const selectMessages = dialogId => {
 				}
 			}
 			return null;
+		})
+		.catch(err => console.error(err));
+};
+
+export const selectDialogByMarker = markerID  => {
+	const dialogs = firestore.collection('dialogs');
+	return dialogs
+		.get()
+		.then(snapshot => {
+			return snapshot.docs.filter(doc => {
+				if (doc.exists) {
+					const dialog = doc.data();
+					if (dialog.marker_id) {
+						console.log(dialog.marker_id)
+						console.log(markerID)
+						if (dialog.marker_id === markerID) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				} else {
+					throw "Document isn't exists";
+				}
+			});
 		})
 		.catch(err => console.error(err));
 };

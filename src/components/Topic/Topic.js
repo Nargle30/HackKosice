@@ -8,7 +8,7 @@ import {getUserInfo, insertDialog} from "../../helpers/firebase";
 const Error = styled.p`
     color: #bf3e3e;
 `;
-const Topic = ({setTopic, setCategory, isChatEnabled}) => {
+const Topic = ({setTopic, setCategory, isChatEnabled, markerID}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const title = get(e, 'target.title.value', '');
@@ -21,6 +21,7 @@ const Topic = ({setTopic, setCategory, isChatEnabled}) => {
                 creator_logo: user.url,
                 date: Date.now(),
                 creator_type: "user",
+                marker_id: markerID,
 
                 messages: [
                     {
@@ -35,8 +36,8 @@ const Topic = ({setTopic, setCategory, isChatEnabled}) => {
             })
         });
 
-        ;
         setTopic({title,category,issue});
+
     };
 
 	const hangleSelect = e => {
@@ -72,7 +73,7 @@ const Topic = ({setTopic, setCategory, isChatEnabled}) => {
                 {!isChatEnabled ? <Error>Choose category and put marker</Error> : ''}
                 
                 <div className='uk-margin'>
-                    <input type='submit' value='Create topic' className="uk-button uk-button-primary uk-button-large uk-width-1-1" style={{backgroundColor: isChatEnabled ? 'rgb(0, 68, 139)' : '#7e7e7e'}} />
+                    <input type='submit' value='Create topic' className="uk-button uk-button-primary uk-button-large uk-width-1-1" style={{backgroundColor: isChatEnabled ? 'rgb(0, 68, 139)' : '#7e7e7e'}} disabled={!isChatEnabled}/>
                 </div>
                 
             </fieldset>
@@ -82,6 +83,7 @@ const Topic = ({setTopic, setCategory, isChatEnabled}) => {
 
 const mapStateToProps = state => ({
 	isChatEnabled: state.topic.isChatEnabled,
+	markerID: state.menu.markerID,
 });
 
 const mapDispatchToProps = dispatch => ({

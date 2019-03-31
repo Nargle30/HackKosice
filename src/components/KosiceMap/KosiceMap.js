@@ -4,7 +4,7 @@ import { CENTER, ZOOM, MAX_ZOOM, THEME } from '../../constants/map';
 import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster/dist/react-leaflet-markercluster';
 import 'react-leaflet-markercluster/dist/styles.min.css';
-import {selectPoints, insertPoint} from '../../helpers/firebase';
+import {selectPoints, insertPoint, selectDialogByMarker} from '../../helpers/firebase';
 import {connect} from "react-redux";
 
 const images = {
@@ -25,10 +25,11 @@ class KosiceMap extends Component {
 
 	state = {
 		points: [],
+		markerId: null,
 	};
 
 	addMarker = e => {
-		const {topic, setCategory, enableChat} = this.props;
+		const {topic, setCategory, enableChat, setMarkerID} = this.props;
 		if (!topic || !topic.category) {
 			return;
 		}
@@ -47,7 +48,7 @@ class KosiceMap extends Component {
 			count_minus: '',
 			url: images[topic.category.toLowerCase()],
 		};
-		insertPoint(newPoint);
+		insertPoint(newPoint).then(res => setMarkerID(res.id))
 		points.push(newPoint);
 		this.setState({points});
 		setCategory(null);
@@ -64,11 +65,11 @@ class KosiceMap extends Component {
 		});
 	};
 
-	openDialog = dialogId => {
+	openDialog = markerID => {
 		const {setStatus, enableChat, setDialogId} = this.props;
 		setStatus(true);
 		enableChat(true);
-		setDialogId(dialogId);
+		selectDialogByMarker(markerID).then(res => setDialogId(res[0].id))
 	};
 
 	render() {
@@ -89,7 +90,7 @@ class KosiceMap extends Component {
 							key={ind}
 							icon={this.getIcon(point)}
 							position={point}
-							onClick={() => this.openDialog(point.dialog)}
+							onClick={() => this.openDialog(point.id)}
 						/>
 					))}
 				</MarkerClusterGroup>
@@ -108,6 +109,7 @@ const mapDispatchToProps = dispatch => ({
 	setCategory: data => dispatch.topic.setCategory(data),
 	enableChat: data => dispatch.topic.enableChat(data),
 	setDialogId: data => dispatch.menu.setDialogId(data),
+	setMarkerID: markerID => dispatch.menu.setMarkerID(markerID),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(KosiceMap );
