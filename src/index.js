@@ -1,9 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 
-import './index.css';
-import App from './App/App';
+import User from '../Users/User';
+import Map from '../components/Map/Map';
 
-ReactDOM.render(
-        <App />
-    , document.getElementById('root'));
+const App = () => {
+    return (
+        <MemoryRouter initialEntries={['/user', '/']} initialIndex={0}>
+            <>
+                <Route path={['/user']} component={User} exact />
+                <Route path={'/'} component={Map} exact />
+            </>
+        </MemoryRouter>
+    );
+};
+
+export default React.memo(App);
