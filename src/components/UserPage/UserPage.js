@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import styled from 'styled-components';
 import {connect} from "react-redux";
+import format from 'date-fns/format'
 
 import './UserPage.css';
-import {getUserInfo, selectUserIssues, selectMessages} from '../../helpers/firebase'
+import {getUserInfo, selectUserIssues} from '../../helpers/firebase'
 
 const UserPageLayout = styled.div`
 	position: relative;
@@ -54,12 +55,9 @@ class UserPage extends Component {
 		const {setDialogId, setStatus} = this.props;
 		setStatus(true);
 		setDialogId(dialogId);
-		//this.props.setStatus()
 	};
 
 	renderCard = (item, ind) => {
-		const date = new Date(null);
-		date.setSeconds(item.date.seconds); // specify value for SECONDS here
 		return (
 			<div className="uk-card uk-card-default uk-width-1-2@m" key={ind}>
 				<div className="uk-card-header">
@@ -69,7 +67,7 @@ class UserPage extends Component {
 						<div className="uk-width-expand">
 							<h3 className="uk-card-title uk-margin-remove-bottom">{item.title}</h3>
 							<p className="uk-text-meta uk-margin-remove-top">
-								<time>{date.toLocaleDateString()}</time>
+								<time>{format(item.date.seconds * 1000, 'HH:mm MM/DD/YYYY')}</time>
 							</p>
 						</div>
 					</div>
