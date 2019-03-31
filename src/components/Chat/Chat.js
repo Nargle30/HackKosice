@@ -42,7 +42,7 @@ const Chat = ({topicData}) => {
     const [userInfo, setUserInfo] = useState({});
 
     useEffect(() => {
-        getUserInfo('HSp4BL6almcFwelsV5u9').then(res => setUserInfo(res))
+        getUserInfo('HSp4BL6almcFwelsV5u9').then(res => setUserInfo(res));
     });
 
     return (

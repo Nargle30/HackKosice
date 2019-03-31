@@ -56,6 +56,8 @@ export const getUserInfo = id => {
 		.catch(err => console.error(err));
 };
 
+export const insertDialog = data => _insert('dialogs', data);
+
 export const selectUserIssues = id => {
 	const users = firestore.collection('users');
 	return users.doc(id)
@@ -69,6 +71,8 @@ export const selectUserIssues = id => {
 	})
 	.catch(err => console.error(err));
 };
+
+
 
 export const selectMessages = dialogId => {
 	const dialogs = firestore.collection('dialogs');
