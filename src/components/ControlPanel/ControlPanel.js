@@ -8,7 +8,7 @@ import Chat from "../Chat/Chat";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
-	position: fixed;
+	position: absolute;
 	transform: ${props => (props.isOpen ? 'translateX(0)' : 'translateX(calc(100%))')};
 	transition: all 0.25s linear;
 	z-index: 100000;
@@ -24,7 +24,7 @@ const StyledPanel = styled.aside`
 	}
 `;
 
-const ControlPanel = ({isOpen, setStatus, topicData, dialogId}) => {
+const ControlPanel = ({isOpen, setStatus, topicData, dialogId, isChatEnabled}) => {
 	const handleBlindClick = () => {
 		setStatus(!isOpen);
 	};
@@ -32,7 +32,7 @@ const ControlPanel = ({isOpen, setStatus, topicData, dialogId}) => {
 	return (
 		<StyledPanel isOpen={isOpen}>
 			<Blind handleBlindClick={handleBlindClick} isOpen={isOpen} />
-			{(topicData || dialogId) ? <Chat /> :  <Topic />}
+			{(topicData || dialogId) && isChatEnabled ? <Chat /> :  <Topic />}
 		</StyledPanel>
 	);
 }
@@ -40,6 +40,7 @@ const ControlPanel = ({isOpen, setStatus, topicData, dialogId}) => {
 const mapStateToProps = state => ({
 	topicData: state.topic.data,
 	isOpen: state.menu.isOpen,
+	isChatEnabled: state.topic.isChatEnabled,
 	dialogId: state.menu.dialogId,
 });
 

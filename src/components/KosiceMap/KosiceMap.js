@@ -24,30 +24,34 @@ class KosiceMap extends Component {
 	}
 
 	state = {
-		points: []
+		points: [],
 	};
 
 	addMarker = e => {
-		const {topic} = this.props;
-		if (!topic || !topic.data || !topic.data.category) return;
+		const {topic, setCategory, enableChat} = this.props;
+		if (!topic || !topic.category) {
+			return;
+		}
+
 		const {points} = this.state;
-		const category = topic.data.category.toLowerCase();
 		const newPoint = {
 			lng: e.latlng.lng,
 			lat: e.latlng.lat,
 			type: 'user',
-			category: category,
+			category: topic.category.toLowerCase(),
 			status: 'active',
 			id_dialog: '',
 			id_creator: '',
 			id_marker: '',
 			count_plus: '',
 			count_minus: '',
-			url: images[category],
+			url: images[topic.category.toLowerCase()],
 		};
 		insertPoint(newPoint);
 		points.push(newPoint);
 		this.setState({points});
+		setCategory(null);
+		enableChat(true);
 	};
 
 	getIcon = point => {
@@ -91,4 +95,9 @@ const mapStateToProps = state => {
 	return {topic};
 };
 
-export default connect(mapStateToProps)(KosiceMap );
+const mapDispatchToProps = dispatch => ({
+	setCategory: data => dispatch.topic.setCategory(data),
+	enableChat: data => dispatch.topic.enableChat(data),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(KosiceMap );

@@ -22,6 +22,7 @@ const UserBio = styled.div`
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: flex-start;
+	margin-top: 50px;
 	margin-bottom: 20px;
 	padding-left: 30px;
 	box-sizing: border-box;
@@ -43,8 +44,10 @@ class UserPage extends Component {
 
 	componentDidMount(){
 		const {userId} = this.state;
+		const {enableChat} = this.props;
 		getUserInfo(userId).then(res => this.setState({info: res}))
 		selectUserIssues(userId).then(res => this.setState({topics: res}));
+		enableChat(true);
 	}
 
 	showDialog = dialogId => {
@@ -85,7 +88,6 @@ class UserPage extends Component {
 		const {topics, info} = this.state;
 		return (
 			<UserPageLayout>
-				<h1>My Kosice</h1>
 				<UserBio>
 					<img src={info.url} />
 					<p>{info.name}</p>
@@ -99,6 +101,7 @@ class UserPage extends Component {
 const mapDispatchToProps = dispatch => ({
 	setStatus: data => dispatch.menu.setStatus(data),
 	setDialogId: data => dispatch.menu.setDialogId(data),
+	enableChat: data => dispatch.topic.enableChat(data),
 });
 
 export default connect(null, mapDispatchToProps)(UserPage);
