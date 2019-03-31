@@ -49,17 +49,17 @@ const Chat = ({topicData, dialogId}) => {
     return (
         <ThemeProvider theme={customTheme}>
             <span className='uk-legend'>
-                {dialogInfo ? dialogInfo.title : topicData.title}
+                {dialogInfo.title ? dialogInfo.title : topicData.title}
             </span>
             <div className="uk-margin">
-                {dialogInfo ? dialogInfo.category : topicData.category}
+                {dialogInfo.category ? dialogInfo.category : topicData.category}
             </div>
             <div style={{ width: '100%', height: 'calc(100vh - 250px)'}}>
-                { dialogInfo ?
+                { dialogInfo.messages ?
                     <MessageList>
                         <MessageGroup>
                             {
-                                dialogInfo.messages && dialogInfo.messages.map((msg, i) => (
+                                dialogInfo.messages.map((msg, i) => (
                                     <Message date={format(msg.time.seconds * 1000, 'HH:mm MM/DD')} isOwn={msg.owner} authorName={msg.user_name}>
                                         <Bubble isOwn={msg.owner} radiusType='last' style={{borderRadius: '5px'}}>
                                             <MessageText>
