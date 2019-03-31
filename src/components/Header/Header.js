@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 const StyledNavigation = styled.nav`
 	position: absolute;
@@ -20,23 +20,26 @@ const StyledLink = styled(Link)`
     color: #000000;
 `;
 
-const LowMenu = styled.a`
+const LowMenu = styled(Link)`
     font-size: 24px;
     color: #000000;
 `;
 
-const Header = () => {
+const Header = (props) => {
+    const {pathname} = props.location;
     return (
         <StyledNavigation>
             <StyledLink to='/'>
                 <u>MyKošice</u>
             </StyledLink>
             <p/>
-            <LowMenu to='/user'>
-                <u>user page</u>
-            </LowMenu>
+            { pathname === '/' &&
+                <LowMenu to='/user'>
+                    <u>user page</u>
+                </LowMenu>
+            }
         </StyledNavigation>
     );
 };
 
-export default Header;
+export default withRouter(Header);

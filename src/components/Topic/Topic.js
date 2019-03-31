@@ -1,6 +1,7 @@
 import React from 'react';
 import get from 'lodash/get';
 import {connect} from "react-redux";
+import {getUserInfo, insertDialog} from "../../helpers/firebase";
 
 const Topic = ({setTopic, setCategory}) => {
     const handleSubmit = (e) => {
@@ -8,6 +9,28 @@ const Topic = ({setTopic, setCategory}) => {
         const title = get(e, 'target.title.value', '');
         const category = get(e, 'target.category.value', '');
         const issue = get(e, 'target.issue.value', '');
+        getUserInfo('HSp4BL6almcFwelsV5u9').then(user => {
+            insertDialog({
+                title: title,
+                creator_name: user.name,
+                creator_logo: user.url,
+                date: Date.now(),
+                creator_type: "user",
+
+                messages: [
+                    {
+                        text: issue,
+                        time: Date.now(),
+                        type: "text",
+                        user_name: user.name,
+                        user_logo: user.url,
+                    }
+                ]
+
+            })
+        });
+
+        ;
         setTopic({title,category,issue});
     };
 
