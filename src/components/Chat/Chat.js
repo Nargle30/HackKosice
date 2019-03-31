@@ -73,7 +73,7 @@ const Chat = ({topicData, dialogId}) => {
     return (
         <ThemeProvider theme={customTheme}>
             <span className='uk-legend uk-margin'>
-                <img style={{height: '30px'}} src={dialogInfo.issue ? images[dialogInfo.issue] : images[topicData.issue]} />
+                <img style={{height: '30px'}} src={dialogInfo.category ? images[dialogInfo.category] : images[topicData.category]} />
                 {' '}
                 {dialogInfo.title ? dialogInfo.title : topicData.title}
             </span>
