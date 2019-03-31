@@ -14,7 +14,7 @@ const Title = styled.h1`
 	font-size: 52px;
 `;
 
-const StyledLink = styled.Link`
+const StyledLink = styled(Link)`
 	text-decoration: none;
     font-size: 52px;
     color: #000000;
