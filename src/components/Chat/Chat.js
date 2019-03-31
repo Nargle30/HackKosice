@@ -102,13 +102,16 @@ const Chat = ({topicData, dialogId}) => {
                     :
                     <MessageList>
                         <MessageGroup>
-                            <Message date={format(Date.now(), 'HH:mm')} isOwn={true} authorName={userInfo.name}>
-                                <Bubble isOwn={true} radiusType='last' style={{borderRadius: '5px'}}>
-                                    <MessageText>
-                                        {topicData.issue}
-                                    </MessageText>
-                                </Bubble>
-                            </Message>
+                            <Msg>
+                                <Avatar isOwn={true} src={userInfo.url} />
+                                <Message date={format(Date.now(), 'HH:mm')} isOwn={true} authorName={userInfo.name}>
+                                    <Bubble isOwn={true} radiusType='last' style={{borderRadius: '5px'}}>
+                                        <MessageText>
+                                            {topicData.issue}
+                                        </MessageText>
+                                    </Bubble>
+                                </Message>
+                            </Msg>
                             <Message date="21:38" isOwn={false} authorName="Helper">
                                 <Bubble isOwn={false} style={{borderRadius: '5px'}}>
                                     <MessageText>
