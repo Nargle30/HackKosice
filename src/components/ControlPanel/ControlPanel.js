@@ -8,7 +8,7 @@ import Chat from "../Chat/Chat";
 
 const StyledPanel = styled.aside`
 	box-sizing: border-box;
-	position: absolute;
+	position: fixed;
 	transform: ${props => (props.isOpen ? 'translateX(0)' : 'translateX(calc(100%))')};
 	transition: all 0.25s linear;
 	z-index: 100000;
